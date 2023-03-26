@@ -59,6 +59,8 @@ namespace Excel
                     Marshal.ReleaseComObject(xlsWorkbook);
                     xlsApp.Quit();
                     Marshal.ReleaseComObject(xlsApp);
+
+                    btnSave.Enabled = true;
                 }
                 catch (Exception ex)
                 {
@@ -66,8 +68,6 @@ namespace Excel
                     MessageBox.Show("Check Office x86 or x64.  Must be compatible with App");
                 }
             }
-
-            
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -86,8 +86,8 @@ namespace Excel
                 }
             }
             // save the application  
-            //xlsWorkbook.SaveAs("C:\\Users\\liaws\\Desktop\\test.xlsx", Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlExclusive, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
-            xlsWorkbook.SaveAs("C:\\Users\\liaws\\Desktop\\test.xlsx", Microsoft.Office.Interop.Excel.XlFileFormat.xlOpenXMLWorkbook, System.Reflection.Missing.Value, Missing.Value, false, false, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlNoChange, Microsoft.Office.Interop.Excel.XlSaveConflictResolution.xlUserResolution, true, Missing.Value, Missing.Value, Missing.Value);
+            //xlsWorkbook.SaveAs(filename, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlExclusive, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
+            xlsWorkbook.SaveAs(filename, Microsoft.Office.Interop.Excel.XlFileFormat.xlOpenXMLWorkbook, System.Reflection.Missing.Value, Missing.Value, false, false, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlNoChange, Microsoft.Office.Interop.Excel.XlSaveConflictResolution.xlUserResolution, true, Missing.Value, Missing.Value, Missing.Value);
             xlsWorkbook.Saved = true;
 
             MessageBox.Show("File Updated");
